@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="0dp"
+    android:layout_marginRight="0dp"
+    tools:context="com.example.nimbusbrowser.HomeActivity">
+
+    <EditText
+        android:id="@+id/search_url_home"
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+
+        android:layout_alignBottom="@+id/search_button_home"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="-2dp"
+        android:autofillHints=""
+        android:background="?attr/colorButtonNormal"
+        android:ems="10"
+        android:hint="@string/Search"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/search_button_home"
+        android:layout_width="67dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/app_bar"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:text="@string/PUSH" />
+
+    <ImageButton
+        android:id="@+id/Google"
+        android:layout_width="117dp"
+        android:layout_height="116dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="129dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/google"
+        android:contentDescription="@string/Google" />
+
+    <ImageButton
+        android:id="@+id/Yandex"
+        android:layout_width="wrap_content"
+        android:layout_height="95dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="280dp"
+        android:background="@drawable/yandex"
+        android:contentDescription="@string/Yandex" />
+</RelativeLayout>

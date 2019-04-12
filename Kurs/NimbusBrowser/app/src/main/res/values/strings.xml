@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Nimbus Browser</string>
+    <string name="Google">Google</string>
+    <string name="Yandex">Yandex</string>
+    <string name="PUSH">PUSH</string>
+    <string name="Search"> Search or enter URL </string>
+</resources>
