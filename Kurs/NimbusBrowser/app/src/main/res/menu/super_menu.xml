@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item
         android:id="@+id/menu_back"
         app:showAsAction="always"
@@ -29,8 +29,27 @@
         android:title="Home"
         android:icon="@drawable/ic_home_black_24dp"
         />
+
     <item
-        android:id="@+id/menu_history"
-        android:icon="@drawable/ic_history_black_24dp"
-        android:title="History" />
+        android:id="@+id/add_favorite"
+        app:showAsAction="always"
+        android:title="Home"
+        android:icon="@drawable/ic_star_border_black_24dp"
+        />
+
+    <item
+    android:title="Main Menu"
+    app:showAsAction="always"
+    android:icon="@drawable/ic_more_vert_black_24dp">
+    <menu>
+        <item
+            android:id="@+id/menu_favorites"
+            android:icon="@drawable/ic_star_border_black_24dp"
+            android:title="Favorites" />
+        <item
+            android:id="@+id/menu_share"
+            android:title="Share"
+            android:icon="@drawable/ic_share_black_24dp" />
+    </menu>
+    </item>
 </menu>

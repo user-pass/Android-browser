@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">Nimbus Browser</string>
+    <string name="app_name">Nimbus</string>
     <string name="Google">Google</string>
     <string name="Yandex">Yandex</string>
     <string name="PUSH">PUSH</string>
-    <string name="Search"> Search or enter URL </string>
+    <string name="SearchWeb">Search</string>
+    <string name="Search">  Search or enter URL </string>
+    <string name="Shortcuts"> Use shortcuts for quick access to popular websites ↷</string>
 </resources>

@@ -1,46 +1,48 @@
 package com.example.nimbusbrowser;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.rapidbrowser.R;
+
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
     private Button SearchButtonHome;
     private EditText InputURL;
     private ImageButton google_btn;
     private ImageButton yandex_btn;
-    private ProgressDialog Loadingbar;
+    private ImageButton duckgo_btn;
+    private ImageButton bing_btn;
+    private TextView say_hello_txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Loadingbar = new ProgressDialog(this);
 
+        say_hello_txt = (TextView)  findViewById(R.id.say_hello);
         SearchButtonHome = (Button) findViewById(R.id.search_button_home);
         InputURL = (EditText) findViewById(R.id.search_url_home);
         google_btn = (ImageButton) findViewById(R.id.Google);
         yandex_btn = (ImageButton) findViewById(R.id.Yandex);
-
-        Loadingbar.setTitle("Loading...");
-        Loadingbar.setMessage("Welcome to Nimbus Browser!");
-        Loadingbar.show();
-
+        duckgo_btn = (ImageButton) findViewById(R.id.Duck);
+        bing_btn = (ImageButton) findViewById(R.id.bing);
 
         SearchButtonHome.setOnClickListener(this);
         google_btn.setOnClickListener(this);
         yandex_btn.setOnClickListener(this);
+        duckgo_btn.setOnClickListener(this);
+        bing_btn.setOnClickListener(this);
     }
 
 
@@ -61,13 +63,39 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             Open_yandex.putExtra("url_adress", "https://www.yandex.com");
             startActivity(Open_yandex);
         }
-
+        if (view == duckgo_btn) {
+            Intent Open_duckgo = new Intent(HomeActivity.this, UrlSearch.class);
+            Open_duckgo.putExtra("url_adress", "https://duckduckgo.com");
+            startActivity(Open_duckgo);
+        }
+        if (view == bing_btn) {
+            Intent Open_bing = new Intent(HomeActivity.this, UrlSearch.class);
+            Open_bing.putExtra("url_adress", "https://www.bing.com");
+            startActivity(Open_bing);
+        }
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.home_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+
+            case R.id.home_menu_favorites:
+                OpenFavorites();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
     private void OpenWebSite() {
-        Loadingbar.setTitle("Loading...");
-        Loadingbar.setMessage("Please wait while we are opening requested website.");
-        Loadingbar.show();
 
         String Url_Address = InputURL.getText().toString();
 
@@ -86,6 +114,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             InputURL.setText("");
             InputURL.requestFocus();
         }
+    }
+
+    private void OpenFavorites()
+    {
+        Intent open_favor = new Intent(HomeActivity.this, ViewFavorites.class);
+        startActivity(open_favor);
     }
 
 
