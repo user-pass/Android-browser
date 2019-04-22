@@ -1,4 +1,5 @@
 <resources>
+    <string name="WelcomeActivity">Nimbus☂</string>
     <string name="app_name">Nimbus</string>
     <string name="Google">Google</string>
     <string name="Yandex">Yandex</string>

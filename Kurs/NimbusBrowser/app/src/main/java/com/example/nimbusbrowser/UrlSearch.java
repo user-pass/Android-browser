@@ -137,12 +137,12 @@ public class UrlSearch extends AppCompatActivity implements View.OnClickListener
             Toast empty = Toast.makeText(UrlSearch.this, "Please enter URL or Web Address", Toast.LENGTH_LONG);
             empty.show();
         } else {
-            String url_Without_https = Url_Address.replaceAll("https://www.", "");
+            String url_Without_https = Url_Address.replaceAll("https://", "");
             String https = "https://";
-            String www = "www.";
+
 
             Intent search = new Intent(UrlSearch.this, UrlSearch.class);
-            search.putExtra("url_adress", https + www + url_Without_https);
+            search.putExtra("url_adress", https + url_Without_https);
             startActivity(search);
 
             UrlInput.setText("");

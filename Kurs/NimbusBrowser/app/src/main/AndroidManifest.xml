@@ -7,7 +7,6 @@
 
     <application
 
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,15 +16,15 @@
         >
 
         <activity android:name="com.example.nimbusbrowser.UrlSearch" android:label="N☂"  android:screenOrientation="portrait"></activity>
-        <activity android:name="com.example.nimbusbrowser.ViewFavorites" android:label="Nimbus"  android:screenOrientation="portrait"></activity>
-        <activity android:name="com.example.nimbusbrowser.WelcomeActivity" android:label="Nimbus"  android:screenOrientation="portrait">
+        <activity android:name="com.example.nimbusbrowser.ViewFavorites" android:label="Nimbus☂"  android:screenOrientation="portrait"></activity>
+        <activity android:name="com.example.nimbusbrowser.WelcomeActivity"  android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.example.nimbusbrowser.HomeActivity" android:label="Nimbus"  android:screenOrientation="portrait"/>
+        <activity android:name="com.example.nimbusbrowser.HomeActivity" android:label="Nimbus☂"  android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
