@@ -19,18 +19,21 @@ import android.widget.Toast;
 
 import com.example.rapidbrowser.R;
 
-public class UrlSearch extends AppCompatActivity implements View.OnClickListener {
+public class UrlSearch extends AppCompatActivity implements View.OnClickListener, DialogWindowAdd.ExampleDialogListener {
 
     private Button SearchUrlButton;
     private EditText UrlInput;
     private WebView SearchWebAddress;
     String url;
     String myCurrentURL;
+    DatabaseHelper db;
+    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_url_search);
+        db = new DatabaseHelper(this);
 
         SearchUrlButton = (Button) findViewById(R.id.search_url_button);
         UrlInput = (EditText) findViewById(R.id.input_search_url);
@@ -41,6 +44,7 @@ public class UrlSearch extends AppCompatActivity implements View.OnClickListener
         WebSettings webSettings = SearchWebAddress.getSettings();
         webSettings.setJavaScriptEnabled(true);
         SearchWebAddress.loadUrl(url);
+        myCurrentURL = url;
         SearchWebAddress.setWebViewClient(new WebViewClient(){
 
             @Override
@@ -73,6 +77,7 @@ public class UrlSearch extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.super_menu, menu);
         return super.onCreateOptionsMenu(menu);
@@ -98,7 +103,9 @@ public class UrlSearch extends AppCompatActivity implements View.OnClickListener
                 HomeButtonClick();
                 break;
 
-            case R.id.add_favorite:
+            case R.id.add_favorite: {
+                openDialog();
+            }
                 break;
 
             case R.id.menu_favorites:
@@ -151,12 +158,11 @@ public class UrlSearch extends AppCompatActivity implements View.OnClickListener
     }
 
 
-    private void HomeButtonClick() {
-
+    private void HomeButtonClick()
+    {
         finish();
         Intent homePage = new Intent(UrlSearch.this, HomeActivity.class);
         startActivity(homePage);
-
     }
 
     private void ShareURL()
@@ -173,6 +179,34 @@ public class UrlSearch extends AppCompatActivity implements View.OnClickListener
     {
         Intent open_favor = new Intent(UrlSearch.this, ViewFavorites.class);
         startActivity(open_favor);
+    }
+
+    public void openDialog() {
+       // menu.getItem(4).setIcon(getResources().getDrawable(R.drawable.ic_star_black_24dp));
+        DialogWindowAdd dialogWindowAdd = new DialogWindowAdd();
+        dialogWindowAdd.show(getSupportFragmentManager(), "Add new favorite");
+    }
+
+    @Override
+    public void applyTextsAdd(String WebName) {
+
+        String uName = WebName;
+        String uAddress = myCurrentURL;
+        if (uName.length() != 0 && uAddress.length() != 0) {
+            AddData(uName, uAddress);
+        } else {
+            Toast.makeText(UrlSearch.this, "Something went wrong:(", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void AddData(String urlName, String urlAddress) {
+        boolean insertData = db.insertData(urlName, urlAddress);
+
+        if (insertData == true) {
+            Toast.makeText(UrlSearch.this, "Successfully entered!", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(UrlSearch.this, "Something went wrong :( \nMake sure you not duplicate favorite's name", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

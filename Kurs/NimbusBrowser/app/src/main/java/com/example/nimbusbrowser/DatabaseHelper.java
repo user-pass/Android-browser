@@ -11,15 +11,15 @@ import static android.content.ContentValues.TAG;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DB_NAME = "NewFavorites.db";
-    private static final String DB_TABLE = "NewFavorites_table";
+    private static final String DB_NAME = "NewFavoritesAdd.db";
+    private static final String DB_TABLE = "NewFavorites_table_add";
     private static final String ID = "ID";
     private static final String NAME = "NAME";
     private static final String URL = "URL";
 
     private static final String CREATE_TABLE = "CREATE TABLE " + DB_TABLE + "("+
             ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            NAME+ " TEXT, " +
+            NAME+ " TEXT UNIQUE," +
             URL + " TEXT " + ")";
 
     public DatabaseHelper(Context context)

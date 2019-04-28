@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton yahoo_btn;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
