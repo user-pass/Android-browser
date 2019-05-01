@@ -133,6 +133,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.home_menu_favorites:
                 OpenFavorites();
+                overridePendingTransition(R.anim.slidein, R.anim.slideout);
                 break;
         }
         return super.onOptionsItemSelected(item);

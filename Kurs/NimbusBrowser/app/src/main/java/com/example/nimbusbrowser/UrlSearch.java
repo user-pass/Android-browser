@@ -1,7 +1,10 @@
 package com.example.nimbusbrowser;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,6 +12,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.CookieManager;
+import android.webkit.DownloadListener;
+import android.webkit.URLUtil;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -42,7 +48,15 @@ public class UrlSearch extends AppCompatActivity implements View.OnClickListener
         url = getIntent().getExtras().get("url_adress").toString();
         UrlInput.setText(url);
         WebSettings webSettings = SearchWebAddress.getSettings();
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSettings.setAllowFileAccess(true);
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setBuiltInZoomControls(true);
+        webSettings.setDisplayZoomControls(false);
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setUseWideViewPort(true);
+
+
         SearchWebAddress.loadUrl(url);
         myCurrentURL = url;
         SearchWebAddress.setWebViewClient(new WebViewClient(){
@@ -70,6 +84,7 @@ public class UrlSearch extends AppCompatActivity implements View.OnClickListener
     public void onBackPressed() {
         if (SearchWebAddress.canGoBack()) {
             SearchWebAddress.goBack();
+
         } else {
             super.onBackPressed();
         }
@@ -110,6 +125,7 @@ public class UrlSearch extends AppCompatActivity implements View.OnClickListener
 
             case R.id.menu_favorites:
                 OpenFavorites();
+                overridePendingTransition(R.anim.slidein, R.anim.slideout);
                 break;
 
             case R.id.menu_share:

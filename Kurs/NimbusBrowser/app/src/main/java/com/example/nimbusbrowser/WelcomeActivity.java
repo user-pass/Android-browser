@@ -36,7 +36,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 } finally {
                     Intent home = new Intent(WelcomeActivity.this, HomeActivity.class);
                     startActivity(home);
-                    overridePendingTransition(R.anim.slidein, R.anim.slideout);
                 }
             }
         };
