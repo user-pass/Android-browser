@@ -1,6 +1,7 @@
 package com.example.nimbusbrowser;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,12 +9,22 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.rapidbrowser.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -33,13 +44,33 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton wikipedia_btn;
     private ImageButton yahoo_btn;
 
+    String API_KEY = "3172179ad37a45f2b4836d89175f9039";
+    String NEWS_SOURCE = "the-washington-post";
+    ListView listNews;
 
+    ArrayList<HashMap<String, String>> dataList = new ArrayList<HashMap<String, String>>();
+    static final String KEY_AUTHOR = "author";
+    static final String KEY_TITLE = "title";
+    static final String KEY_DESCRIPTION = "description";
+    static final String KEY_URL = "url";
+    static final String KEY_URLTOIMAGE = "urlToImage";
+    static final String KEY_PUBLISHEDAT = "publishedAt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         buttons();
+
+       listNews = (ListView) findViewById(R.id.listNews);
+
+        if(Function.isNetworkAvailable(getApplicationContext()))
+        {
+            DownloadNews newsTask = new DownloadNews();
+            newsTask.execute();
+        }else{
+            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -200,4 +231,62 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         yahoo_btn.setOnClickListener(this);
     }
 
+    class DownloadNews extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+        protected String doInBackground(String... args) {
+            String xml = "";
+
+            String urlParameters = "";
+            xml = Function.excuteGet("https://newsapi.org/v1/articles?source="+NEWS_SOURCE+"&sortBy=top&apiKey="+API_KEY, urlParameters);
+            return  xml;
+        }
+        @Override
+        protected void onPostExecute(String xml) {
+
+            if(xml.length()>10){ // Just checking if not empty
+
+                try {
+                    JSONObject jsonResponse = new JSONObject(xml);
+                    JSONArray jsonArray = jsonResponse.optJSONArray("articles");
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        HashMap<String, String> map = new HashMap<String, String>();
+                        map.put(KEY_AUTHOR, "");
+                        //map.put(KEY_AUTHOR, jsonObject.optString(KEY_AUTHOR).toString());
+                        map.put(KEY_TITLE, jsonObject.optString(KEY_TITLE).toString());
+                        map.put(KEY_DESCRIPTION, jsonObject.optString(KEY_DESCRIPTION).toString());
+                        map.put(KEY_URL, jsonObject.optString(KEY_URL).toString());
+                        map.put(KEY_URLTOIMAGE, jsonObject.optString(KEY_URLTOIMAGE).toString());
+                        map.put(KEY_PUBLISHEDAT, jsonObject.optString(KEY_PUBLISHEDAT).toString());
+                        dataList.add(map);
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(getApplicationContext(), "Unexpected error", Toast.LENGTH_SHORT).show();
+                }
+
+                ListNewsAdapter adapter = new ListNewsAdapter(HomeActivity.this, dataList);
+                listNews.setAdapter(adapter);
+
+                listNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    public void onItemClick(AdapterView<?> parent, View view,
+                                            int position, long id) {
+                        Intent i = new Intent(HomeActivity.this, UrlSearch.class);
+                        i.putExtra("url_adress", dataList.get(+position).get(KEY_URL));
+                        startActivity(i);
+                    }
+                });
+
+            }else{
+                Toast.makeText(getApplicationContext(), "No news found", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+
+    }
 }

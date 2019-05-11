@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/abril_fatface</item>
+        <item>@font/allerta_stencil</item>
+        <item>@font/almendra_sc</item>
+        <item>@font/autour_one</item>
+        <item>@font/averia_libre</item>
+        <item>@font/baloo</item>
+        <item>@font/belgrano</item>
+        <item>@font/bungee_shade</item>
+        <item>@font/carme</item>
+        <item>@font/carrois_gothic_sc</item>
+        <item>@font/ceviche_one</item>
+        <item>@font/faster_one</item>
+        <item>@font/headland_one</item>
+        <item>@font/jacques_francois</item>
+        <item>@font/kite_one</item>
+        <item>@font/krona_one</item>
+        <item>@font/monoton</item>
+        <item>@font/nosifer</item>
+        <item>@font/nova_flat</item>
+        <item>@font/ramabhadra</item>
+        <item>@font/ribeye</item>
+        <item>@font/ribeye_marrow</item>
+        <item>@font/rock_salt</item>
+        <item>@font/sofadi_one</item>
+        <item>@font/sonsie_one</item>
+        <item>@font/ubuntu</item>
+        <item>@font/unlock</item>
+    </array>
+</resources>

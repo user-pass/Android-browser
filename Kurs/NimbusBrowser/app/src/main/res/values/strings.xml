@@ -4,7 +4,7 @@
     <string name="Google">Google</string>
     <string name="Yandex">Yandex</string>
     <string name="PUSH">PUSH</string>
-    <string name="SearchWeb">Search</string>
+    <string name="SearchWeb">Search </string>
     <string name="Search">  Search or enter URL </string>
-    <string name="Shortcuts"> Use shortcuts for quick access to popular websites ↷</string>
+    <string name="Shortcuts">Welcome to Nimbus browser!</string>
 </resources>

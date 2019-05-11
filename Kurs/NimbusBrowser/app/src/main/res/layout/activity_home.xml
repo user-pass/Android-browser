@@ -33,165 +33,186 @@
         android:layout_alignParentEnd="true"
         android:background="@drawable/my_button_bg"
         android:drawableLeft="@drawable/ic_search_black_24dp"
-        android:text="@string/SearchWeb"
+        android:fontFamily="@font/headland_one"
+        android:text="Search "
         android:textColor="#000000"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/say_hello"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="65dp"
-        android:fontFamily="@font/dejavu_sans"
-        android:gravity="center"
-        android:text="@string/Shortcuts"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#7C4DFF" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:gravity="center_vertical"
-            android:layout_marginTop="45dp"
-            android:layout_marginLeft="30dp"
-            android:layout_alignEnd="@id/say_hello"
-            android:orientation="vertical">
-
-
-            <ImageButton
-                android:id="@+id/Google"
-                android:layout_width="130dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="20dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/googletext"
-                android:contentDescription="@string/Google"
-                android:scaleType="fitXY" />
-
-            <ImageButton
-                android:id="@+id/Yandex"
-                android:layout_width="130dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="20dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/yandextext"
-                android:contentDescription="@string/Yandex"
-                android:scaleType="fitXY" />
-
-            <ImageButton
-                android:id="@+id/Duck"
-                android:layout_width="130dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="20dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/duckduckgo"
-                android:contentDescription="DuckDuckGo"
-                android:scaleType="fitXY" />
-
-            <ImageButton
-                android:id="@+id/bing"
-                android:layout_width="130dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="20dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/binglogo"
-                android:contentDescription="Bing"
-                android:scaleType="fitXY" />
-
-            <ImageButton
-                android:id="@+id/facebook"
-                android:layout_width="130dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="20dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="Facebook"
-                android:background="@drawable/facebook_top"
-                android:scaleType="fitXY"/>
-
-            <ImageButton
-                android:id="@+id/youtube"
-                android:layout_width="130dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="20dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="Youtube"
-                android:background="@drawable/youtube_logo"
-                android:scaleType="fitXY" />
-
-        </LinearLayout>
+        android:textSize="15sp" />
 
     <LinearLayout
+        android:id="@+id/showdescriptioncontenttitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignEnd="@id/say_hello"
-        android:layout_marginTop="45dp"
-        android:layout_marginRight="30dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/say_hello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="57dp"
+            android:background="@drawable/my_start_phrase"
+            android:fontFamily="@font/ribeye_marrow"
+            android:gravity="center"
+            android:text="@string/Shortcuts"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/showdescriptioncontenttitle"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
         android:adjustViewBounds="true"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/twitter"
-            android:layout_width="130dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right"
-            android:layout_marginTop="15dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/twitter_logo"
-            android:contentDescription="twitter" />
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="10dp">
 
-        <ImageButton
-            android:id="@+id/vkontakte"
-            android:layout_width="130dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right"
-            android:layout_marginTop="25dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/vkontakte"
-            android:contentDescription="vkontakte" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/instagram"
-            android:layout_width="130dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right"
-            android:layout_marginTop="20dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/instagram_logo"
-            android:contentDescription="vkontakte" />
+                <ImageButton
+                    android:id="@+id/Google"
+                    android:layout_width="130dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/googletext"
+                    android:contentDescription="@string/Google"
+                    android:scaleType="fitXY" />
 
-        <ImageButton
-            android:id="@+id/amazon"
-            android:layout_width="130dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right"
-            android:layout_marginTop="25dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/amazon_logo"
-            android:contentDescription="Amazon"  />
+                <ImageButton
+                    android:id="@+id/Yandex"
+                    android:layout_width="130dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/yandextext"
+                    android:contentDescription="@string/Yandex"
+                    android:scaleType="fitXY" />
 
-        <ImageButton
-            android:id="@+id/wikipedia"
-            android:layout_width="130dp"
-            android:layout_height="35dp"
-            android:layout_gravity="right"
-            android:layout_marginTop="20dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/wikipedia_logo"
-            android:contentDescription="Wikipedia" />
+                <ImageButton
+                    android:id="@+id/Duck"
+                    android:layout_width="130dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/duckduckgo"
+                    android:contentDescription="DuckDuckGo"
+                    android:scaleType="fitXY" />
 
-        <ImageButton
-            android:id="@+id/yahoo"
-            android:layout_width="130dp"
-            android:layout_height="35dp"
-            android:layout_gravity="right"
-            android:layout_marginTop="20dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/yahoo_logo"
-            android:contentDescription="Yahoo"/>
+                <ImageButton
+                    android:id="@+id/bing"
+                    android:layout_width="130dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/binglogo"
+                    android:contentDescription="Bing"
+                    android:scaleType="fitXY" />
+
+                <ImageButton
+                    android:id="@+id/facebook"
+                    android:layout_width="130dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/facebook_top"
+                    android:contentDescription="Facebook"
+                    android:scaleType="fitXY" />
+
+                <ImageButton
+                    android:id="@+id/youtube"
+                    android:layout_width="130dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/youtube_logo"
+                    android:contentDescription="Youtube"
+                    android:scaleType="fitXY" />
+
+                <ImageButton
+                    android:id="@+id/twitter"
+                    android:layout_width="130dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/twitter_logo"
+                    android:contentDescription="twitter" />
+
+                <ImageButton
+                    android:id="@+id/vkontakte"
+                    android:layout_width="130dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/vkontakte"
+                    android:contentDescription="vkontakte" />
+
+                <ImageButton
+                    android:id="@+id/instagram"
+                    android:layout_width="130dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/instagram_logo"
+                    android:contentDescription="vkontakte" />
+
+                <ImageButton
+                    android:id="@+id/amazon"
+                    android:layout_width="130dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/amazon_logo"
+                    android:contentDescription="Amazon" />
+
+                <ImageButton
+                    android:id="@+id/wikipedia"
+                    android:layout_width="130dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/wikipedia_logo"
+                    android:contentDescription="Wikipedia" />
+
+                <ImageButton
+                    android:id="@+id/yahoo"
+                    android:layout_width="130dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/yahoo_logo"
+                    android:contentDescription="Yahoo" />
+
+            </LinearLayout>
+
+        </ScrollView>
 
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/listNews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="170dp"
+        android:background="#FFFFFF"
+        android:divider="#F5F5F5"
+        android:dividerHeight="1dp"
+        android:visibility="visible" />
+
 
 </RelativeLayout>
